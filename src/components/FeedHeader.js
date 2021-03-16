@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import md5 from 'crypto-js/md5';
+import '../css/FeedHeader.css';
 
 class FeedHeader extends React.Component {
   constructor(props) {
@@ -14,28 +15,34 @@ class FeedHeader extends React.Component {
     const hash = md5(email).toString();
     if (score) {
       return (
-        <header>
+        <header className="header">
           <img
             src={ `https://www.gravatar.com/avatar/${hash}` }
             alt="Avatar"
             data-testid="header-profile-picture"
+            className="logoGravatar"
           />
-          <div data-testid="header-player-name">{playerName}</div>
-          <div data-testid="header-score">{score.score}</div>
-          <div>{`Acertadas: ${score.assertions}`}</div>
+          <div className="scoreDiv">
+            <div data-testid="header-player-name" className="score">{playerName}</div>
+            <div data-testid="header-score" className="score">{`Pontuação: ${score.score}`}</div>
+            <div className="score">{`Acertadas: ${score.assertions}`}</div>
+          </div>
         </header>
       );
     }
     return (
-      <header>
+      <header className="header">
         <img
           src={ `https://www.gravatar.com/avatar/${hash}` }
           alt="Avatar"
           data-testid="header-profile-picture"
+          className="logoGravatar"
         />
-        <div data-testid="header-player-name">{playerName}</div>
-        <div data-testid="header-score">{0}</div>
-        <div>{`Acertadas: ${0}`}</div>
+        <div className="scoreDiv">
+          <div className="score" data-testid="header-player-name">{playerName}</div>
+          <div className="score" data-testid="header-score">{`Pontuação: ${0}`}</div>
+          <div className="score">{`Acertadas: ${0}`}</div>
+        </div>
       </header>
     );
   }

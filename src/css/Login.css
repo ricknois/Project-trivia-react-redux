@@ -1,0 +1,39 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+
+html, body {
+  height: 100%;
+} 
+body {
+  background: hsla(217, 100%, 50%, 1);
+  background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+}
+
+@media only screen and (max-width: 450px)  {
+  .logo {
+    display: flex;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 10vh;
+  }
+  .input {
+    margin-top: 2vh;
+  }
+  .inputDiv {
+    display: flex;
+    flex-direction: column;
+    padding-right: 7vw;
+    padding-left: 7vw;
+  }
+  .indexBtnDiv {
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+  }
+  .button {
+    margin: 1vh;
+  }
+}
+

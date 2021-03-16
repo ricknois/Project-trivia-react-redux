@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getSession } from '../services/api';
+import logo from '../logo.png';
+import '../css/Login.css';
 
 import { fetchToken } from '../actions';
 
@@ -62,45 +64,47 @@ class Login extends React.Component {
       this.handleRedirect();
     }
     return (
-      <div>
-        <label htmlFor="user">
-          User:
+      <div className="divPrincipal">
+        <img src={ logo } alt="Logo Trivia do Faustão" className="logo" />
+        <div className="inputDiv">
           <input
             name="user"
             type="text"
             data-testid="input-player-name"
+            className="input is-rounded"
             onChange={ (e) => this.handleChange(e) }
+            placeholder="User"
           />
-        </label>
-        <br />
-        <label htmlFor="email">
-          E-mail:
           <input
             name="email"
             type="email"
             data-testid="input-gravatar-email"
+            className="input is-rounded"
             onChange={ (e) => this.handleChange(e) }
+            placeholder="Email"
           />
-        </label>
-        <br />
-        <button
-          disabled={ disabled }
-          type="button"
-          data-testid="btn-play"
-          onClick={ () => infoSave(user, email) && this.setState({ redirect: true }) }
-        >
-          Entrar
-        </button>
-        <br />
-        <Link to="/settings">
+        </div>
+        <div className="indexBtnDiv">
           <button
+            disabled={ disabled }
             type="button"
-            data-testid="btn-settings"
+            data-testid="btn-play"
+            className="button is-success indexBtn"
+            onClick={ () => infoSave(user, email) && this.setState({ redirect: true }) }
           >
-            Configurações
+            Entrar
           </button>
-        </Link>
-
+          <Link to="/settings">
+            <button
+              type="button"
+              data-testid="btn-settings"
+              className="button is-warning indexBtn"
+              disabled
+            >
+              Configurações
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }

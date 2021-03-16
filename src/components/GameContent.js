@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
+import '../css/GameContent.css';
 
-import './GameContent.css';
 import { addResult } from '../actions/game';
 import { addPlayerRank } from '../actions/ranking';
+
 
 class GameContent extends React.Component {
   constructor(props) {
@@ -172,7 +173,7 @@ class GameContent extends React.Component {
         key={ `btn${index}` }
         id={ `order-${sort[index]}` }
         type="button"
-        className={ `${answer ? 'correct' : null}` }
+        className={ `button is-rounded ${answer ? 'is-success' : 'is-info'}` }
         onClick={ (event) => this.handleClickAnswer(event)
           && this.setPlayerScore(questionsDataARR, counter) }
         data-testid="correct-answer"
@@ -191,7 +192,7 @@ class GameContent extends React.Component {
         key={ `btn${index}` }
         id={ `order-${sort[index]}` }
         type="button"
-        className={ ` ${answer ? 'incorrect' : null}` }
+        className={ ` button is-rounded ${answer ? 'is-danger' : 'is-info'}` }
         onClick={ (event) => this.handleClickAnswer(event) }
         data-testid={ `wrong-answer-${index}` }
       >
@@ -221,7 +222,7 @@ class GameContent extends React.Component {
       return (
         <button
           disabled={ !btnDisabled }
-          className={ `${!btnDisabled ? 'btnDisplay' : null}` }
+          className={ `${!btnDisabled ? 'btnDisplay' : 'button is-rounded'}` }
           type="button"
           onClick={ () => this.handleClickNextButton() }
           data-testid="btn-next"
@@ -257,12 +258,12 @@ class GameContent extends React.Component {
 
     return (
       <div className="father">
-        <p data-testid="question-category">{questionsDataARR.category}</p>
-        <p data-testid="question-text">{questionsDataARR.question}</p>
-        {this.renderOptions()}
         <div className="counter">
           {!btnDisabled && <span>{counter}</span>}
         </div>
+        <p data-testid="question-category">{`Categoria: ${questionsDataARR.category}`}</p>
+        <p data-testid="question-text">{questionsDataARR.question}</p>
+        {this.renderOptions()}
         {this.renderNextButton()}
       </div>
     );
